@@ -1,0 +1,28 @@
+{
+  "title": "其他导航",
+  "icon": "fa fa-ethernet",
+  "classifies": [
+    {
+      "title": "电商相关",
+      "websites": [
+        {
+          "title": "tkstart",
+          "description": "AMC 全球电商中文社区",
+          "url": "https://tkstart.com/",
+          "logo": "tkstart.com.png"
+        }
+      ]
+    },
+    {
+      "title": "设计相关",
+      "websites": [
+        {
+          "title": "设计小咖",
+          "description": "设计师导航",
+          "url": "https://www.iamxk.com/navigation",
+          "logo": "www.iamxk.com.ico"
+        }
+      ]
+    }
+  ]
+}
