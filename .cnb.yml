@@ -9,3 +9,29 @@ $:
       stages:
         - name: 安装依赖
           script: npm install
+
+$:
+  tag_push:
+    - docker:
+        image: node:20
+      stages:
+        - name: 获取最新变更日志
+          image: cnbcool/changelog
+          exports:
+            latestChangeLog: LATEST_CHANGE_LOG
+        - name: 创建发布
+          type: git:release
+          options:
+            title: release
+            description: ${LATEST_CHANGE_LOG}
+        - name: 安装依赖
+          script: npm install
+        - name: 构建
+          script: npm run build
+        - name: 压缩
+          script: tar -zcvf dist.tar.gz dist
+        - name: 上传附件
+          image: cnbcool/attachments:latest
+          settings:
+            attachments:
+              - dist.tar.gz
