@@ -15,6 +15,7 @@ export default defineConfig(() => {
             vue(),
         ],
         server: {
+            allowedHosts: ['localhost', '127.0.0.1', '.cnb.run'],
             host: '0.0.0.0',
             port: 3000,
         }
