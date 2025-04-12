@@ -1,0 +1,11 @@
+$:
+  vscode:
+    - docker:
+        image: node:20
+      runner:
+        cpus: 8
+      services:
+        - vscode
+      stages:
+        - name: 安装依赖
+          script: npm install
