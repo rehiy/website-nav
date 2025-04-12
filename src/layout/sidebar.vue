@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { ICategory } from '@/website';
+import { ICategory } from '@/helper/config';
 
 defineOptions({
     name: 'LayoutSidebar',

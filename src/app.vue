@@ -1,24 +1,18 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
-import { menus } from '@/website';
-
 import Header from '@/layout/header.vue';
 import Footer from '@/layout/footer.vue';
 import Sidebar from '@/layout/sidebar.vue';
 import Section from '@/layout/section.vue';
 import About from '@/layout/about.vue';
 
+import { Catogories } from '@/helper/config';
+const categories = ref(Catogories);
+
 defineOptions({
     name: 'LayoutIndex',
 });
-
-const categories = ref(
-    menus.concat({
-        title: '关于本站',
-        icon: 'fa fa-heart',
-    })
-);
 </script>
 
 <template>

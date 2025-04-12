@@ -1,18 +1,18 @@
 <script lang="ts" setup>
+import { Catogories } from '@/helper/config';
+const item = Catogories.at(-1);
+
 defineOptions({
     name: 'LayoutAbout',
 });
 </script>
 
 <template>
-    <div class="nav-section text-body">
-        <h4 id="关于本站" class="nav-section__title">
-            <i class="fa fa-heart" />
-            关于本站
+    <div v-if="item" class="nav-section text-body">
+        <h4 :id="item.title.replace(/\s/, '_')" class="nav-section__title">
+            <i class="item.icon ? item.icon : 'fa fa-tags'" /> {{ item.title }}
         </h4>
-        <p>
-            本站由腾讯云开发者先锋运营并维护，包含各类开发者工具网址。
-        </p>
+        <div>{{ item.description }}</div>
     </div>
 </template>
 

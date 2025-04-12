@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { Setting } from '@/helper/config';
+
 defineOptions({
     name: 'LayoutAFooter',
 });
@@ -15,7 +17,7 @@ const goToAnchor = () => {
     <footer class="d-flex bg-light p-4 pb-3">
         <div class="flex-fill text-body-secondary">
             <div class="mb-2">
-                &copy; 2021-{{ year }} <a href="https://tdp.fan/#About" target="_blank">腾讯云开发者先锋</a>
+                &copy; 2021-{{ year }} <a :href="Setting.url" target="_blank">{{ Setting.copyright }}</a>
             </div>
             <div>当前页面由 <a href="https://www.rehiy.com" target="_blank">若海</a> 基于 Bootstrap&Vue 构建；数据收集自互联网，如有侵权敬请告知。</div>
         </div>

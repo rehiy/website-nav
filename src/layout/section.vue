@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { IClassify } from '@/website';
-import LazyloadImage from './lazyload.vue';
+import { IClassify } from '@/helper/config';
+import LazyloadImage from '@/helper/lazyload.vue';
 
 defineOptions({
     name: 'LayoutSection',
@@ -14,7 +14,7 @@ defineProps<{
 <template>
     <div class="nav-section text-body">
         <h4 :id="classify.title.replace(/\s/, '_')" class="nav-section__title">
-            <i class="fa fa-tags" /> {{ classify.title }}
+            <i class="classify.icon ? classify.icon : 'fa fa-tags'" /> {{ classify.title }}
         </h4>
         <div class="nav-section__main row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4">
             <div v-for="item in classify.websites" :key="item.url" class="col d-flex">

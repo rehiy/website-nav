@@ -9,11 +9,11 @@ withDefaults(
     defineProps<{
         src: string
         alt?: string
-        defaultSrc?: string
+        lazy?: string
     }>(),
     {
         alt: 'img',
-        defaultSrc: './assets/link.png',
+        lazy: './assets/link.png',
     },
 );
 
@@ -34,7 +34,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <img ref="lazyImageRef" class="lazy-img" :alt="alt" :src="defaultSrc" :data-img-src="src || defaultSrc">
+    <img ref="lazyImageRef" class="lazy-img" :alt="alt" :src="lazy" :data-img-src="src || lazy">
 </template>
 
 <style scoped lang="less">
