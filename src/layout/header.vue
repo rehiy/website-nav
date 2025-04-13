@@ -8,18 +8,25 @@ defineOptions({
 defineProps<{
     setting: ISetting
 }>();
+
+const gotoTop = () => {
+    const nav = document.querySelector('.nav-container');
+    nav?.scrollTo({ top: 0, behavior: 'smooth' });
+};
 </script>
 
 <template>
-    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav id="top" class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="#" @click="gotoTop()">
                 <img src="/assets/logo.png">
             </a>
             <div id="navbarSupported" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li v-for="item in setting.nav_menu" :key="item.url" class="nav-item">
-                        <a class="nav-link active" :href="item.url">{{ item.title }}</a>
+                        <a class="nav-link active" :href="item.url" target="_blank">
+                            {{ item.title }}
+                        </a>
                     </li>
                 </ul>
                 <form class="d-flex">
@@ -37,8 +44,13 @@ defineProps<{
 </template>
 
 <style scoped lang="less">
-.navbar-brand img {
-    max-width: 235px
+.navbar-brand {
+    width: calc(var(--sidebar-width) - 1rem);
+
+    img {
+        max-width: 100%;
+        max-height: 44px;
+    }
 }
 
 input[type="search"] {

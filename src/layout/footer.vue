@@ -11,7 +11,7 @@ defineProps<{
 
 const year = new Date().getFullYear();
 
-const goToAnchor = () => {
+const gotoTop = () => {
     const nav = document.querySelector('.nav-container');
     nav?.scrollTo({ top: 0, behavior: 'smooth' });
 };
@@ -28,7 +28,7 @@ const goToAnchor = () => {
             </div>
         </div>
         <div class="goto-top">
-            <a href="#" @click="goToAnchor">
+            <a href="#" @click="gotoTop">
                 <i class="fa fa-jet-fighter-up" />
             </a>
         </div>

@@ -22,29 +22,26 @@ getCategories().then(v => categories.value = v);
 </script>
 
 <template>
-    <Header v-if="setting.title" :setting="setting" />
-    <main v-if="categories.length" class="d-flex">
-        <div class="nav-sidebar d-none d-md-block bg-light border-end">
-            <Sidebar :setting="setting" :categories="categories" />
-        </div>
-        <div class="nav-container">
-            <template v-for="category in categories" :key="category.title">
-                <template v-for="classify in category.classifies" :key="classify.title">
-                    <Section v-if="classify.websites" :classify="classify" />
+    <div v-if="setting.title" class="vh-100 d-flex flex-column">
+        <Header :setting="setting" />
+        <main v-if="categories.length" class="d-flex overflow-hidden">
+            <div class="nav-sidebar d-none d-md-block bg-light border-end">
+                <Sidebar :setting="setting" :categories="categories" />
+            </div>
+            <div class="nav-container">
+                <template v-for="category in categories" :key="category.title">
+                    <template v-for="classify in category.classifies" :key="classify.title">
+                        <Section v-if="classify.websites" :classify="classify" />
+                    </template>
                 </template>
-            </template>
-            <About :setting="setting" />
-            <Footer :setting="setting" />
-        </div>
-    </main>
+                <About :setting="setting" />
+                <Footer :setting="setting" />
+            </div>
+        </main>
+    </div>
 </template>
 
 <style scoped lang="less">
-main {
-    height: calc(100% - var(--header-height));
-    overflow: hidden;
-}
-
 .nav-sidebar {
     width: var(--sidebar-width);
 }
@@ -55,7 +52,6 @@ main {
 
 .nav-sidebar,
 .nav-container {
-    height: 100%;
     overflow-y: auto;
     transition: all 0.5s ease-in-out;
 
