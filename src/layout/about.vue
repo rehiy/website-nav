@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import VueMarkdown from 'vue-markdown-render';
+
 import { ISetting } from '@/types';
 
 defineOptions({
@@ -15,7 +17,7 @@ defineProps<{
         <h4 id="about_us" class="nav-section__title">
             <i class="fa fa-heart" /> 关于本站
         </h4>
-        <div v-html="setting.about_us" />
+        <vue-markdown :source="setting.about_us" />
     </div>
 </template>
 
