@@ -1,9 +1,11 @@
 import { gql, request } from 'graphql-request';
+
+import { ISetting, ICategory } from '@/types';
 import * as config from '@/helper/config';
 
 const GQL_ENDPOINT = `${location.origin}/api/graphql`;
 
-export function getSetting() {
+export function getSetting(): Promise<ISetting> {
     const query = gql`
         query Datasets {
             navSetting {
@@ -12,18 +14,19 @@ export function getSetting() {
                 description
                 copyright
                 url
+                nav_menu
                 about_us
             }
         }
     `;
 
-    return request(GQL_ENDPOINT, query).then((data) => {
+    return request<{ navSetting: ISetting }>(GQL_ENDPOINT, query).then((data) => {
         config.updateMeta(data.navSetting);
         return config.setting;
     });
 }
 
-export function getCategories() {
+export function getCategories(): Promise<ICategory[]> {
     const query = gql`
         query Datasets(
             $sort: [String] = ["sort:asc"]
@@ -55,7 +58,7 @@ export function getCategories() {
         }
     `;
 
-    return request(GQL_ENDPOINT, query).then((data) => {
+    return request<{ navCategories: ICategory[] }>(GQL_ENDPOINT, query).then((data) => {
         return data.navCategories;
     });
 }
