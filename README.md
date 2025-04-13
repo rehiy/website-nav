@@ -1,6 +1,6 @@
 # 开发者导航
 
-实用开发者工具导航，包含各类开发者工具网址，所有网址收录文件在 `/src/website/` 下存放。
+实用开发者工具导航，包含各类开发者工具网址，所有网址收录文件在 `/src/website` 下存放。
 
 ## 快速启动
 
@@ -14,6 +14,10 @@ npm run dev
 ```sh
 npm run build
 ```
+
+## 启用 GraphQL 后端
+
+修改文件 `/src/app.vue` 中的 `/helper/jsondata` 为 `/helper/graphql`
 
 ## 其他
 
