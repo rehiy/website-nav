@@ -13,7 +13,7 @@ withDefaults(
     }>(),
     {
         alt: 'img',
-        lazy: './assets/link.png',
+        lazy: './assets/link.svg',
     },
 );
 
