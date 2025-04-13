@@ -1,18 +1,21 @@
 <script lang="ts" setup>
-import { Catogories } from '@/helper/config';
-const item = Catogories.at(-1);
+import { ISetting } from '@/types';
 
 defineOptions({
     name: 'LayoutAbout',
 });
+
+defineProps<{
+    setting: ISetting
+}>();
 </script>
 
 <template>
-    <div v-if="item" class="nav-section text-body">
-        <h4 :id="item.title.replace(/\s/, '_')" class="nav-section__title">
-            <i class="item.icon ? item.icon : 'fa fa-tags'" /> {{ item.title }}
+    <div class="nav-section text-body">
+        <h4 id="about_us" class="nav-section__title">
+            <i class="fa fa-heart" /> 关于本站
         </h4>
-        <div>{{ item.description }}</div>
+        <div>{{ setting.about_us }}</div>
     </div>
 </template>
 

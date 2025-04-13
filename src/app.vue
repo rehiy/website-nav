@@ -1,25 +1,31 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
 
+import { ICategory, ISetting } from '@/types';
+import { getSetting, getCategories } from '@/helper/jsondata';
+
 import Header from '@/layout/header.vue';
 import Footer from '@/layout/footer.vue';
 import Sidebar from '@/layout/sidebar.vue';
 import Section from '@/layout/section.vue';
 import About from '@/layout/about.vue';
 
-import { Catogories } from '@/helper/config';
-const categories = ref(Catogories);
-
 defineOptions({
     name: 'LayoutIndex',
 });
+
+const setting = ref({} as ISetting);
+getSetting().then(v => setting.value = v);
+
+const categories = ref([] as ICategory[]);
+getCategories().then(v => categories.value = v);
 </script>
 
 <template>
-    <Header />
-    <main class="d-flex">
+    <Header v-if="setting.title" :setting="setting" />
+    <main v-if="categories.length" class="d-flex">
         <div class="nav-sidebar d-none d-md-block bg-light border-end">
-            <Sidebar :categories="categories" />
+            <Sidebar :setting="setting" :categories="categories" />
         </div>
         <div class="nav-container">
             <template v-for="category in categories" :key="category.title">
@@ -27,8 +33,8 @@ defineOptions({
                     <Section v-if="classify.websites" :classify="classify" />
                 </template>
             </template>
-            <About />
-            <Footer />
+            <About :setting="setting" />
+            <Footer :setting="setting" />
         </div>
     </main>
 </template>

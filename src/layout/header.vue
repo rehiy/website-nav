@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { Setting } from '@/helper/config';
+import { ISetting } from '@/types';
 
 defineOptions({
     name: 'LayoutHeader',
 });
 
-document.title = Setting.title;
-document.querySelector('meta[name="keywords"]')?.setAttribute('content', Setting.keywords);
-document.querySelector('meta[name="description"]')?.setAttribute('content', Setting.description);
+defineProps<{
+    setting: ISetting
+}>();
 </script>
 
 <template>

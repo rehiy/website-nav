@@ -1,11 +1,12 @@
 <script lang="ts" setup>
-import { ICategory } from '@/helper/config';
+import { ISetting, ICategory } from '@/types';
 
 defineOptions({
     name: 'LayoutSidebar',
 });
 
 defineProps<{
+    setting: ISetting,
     categories: ICategory[]
 }>();
 
@@ -19,25 +20,25 @@ const goToAnchor = (id: string) => {
 <template>
     <ul class="sidenav__list">
         <li v-for="category in categories" :key="category.title" class="border-bottom">
-            <template v-if="category.classifies">
-                <span class="sidenav__list__item multiple" @click="category.expand = !category.expand">
-                    <span>
-                        <i :class="[category.icon || 'fa fa-hand-point-right']" />
-                        <span>{{ category.title }}</span>
-                    </span>
-                    <span class="arrow fa fa-angle-right" :class="[category.expand ? 'arrow--expand' : '']" />
+            <span class="sidenav__list__item multiple" @click="category.expand = !category.expand">
+                <span>
+                    <i :class="[category.icon || 'fa fa-hand-point-right']" />
+                    <span>{{ category.title }}</span>
                 </span>
-                <ul v-if="category.expand">
-                    <li v-for="classify in category.classifies" :key="classify.title" class="border-bottom">
-                        <span class="sidenav__list__item" @click="goToAnchor(classify.title.replace(/\s/, '_'))">
-                            <span>{{ classify.title }}</span>
-                        </span>
-                    </li>
-                </ul>
-            </template>
-            <span v-else class="sidenav__list__item" @click="goToAnchor(category.title.replace(/\s/, '_'))">
-                <i :class="category.icon" />
-                <span>{{ category.title }}</span>
+                <span class="arrow fa fa-angle-right" :class="[category.expand ? 'arrow--expand' : '']" />
+            </span>
+            <ul v-if="category.expand">
+                <li v-for="classify in category.classifies" :key="classify.title" class="border-bottom">
+                    <span class="sidenav__list__item" @click="goToAnchor(classify.title.replace(/\s/, '_'))">
+                        <span>{{ classify.title }}</span>
+                    </span>
+                </li>
+            </ul>
+        </li>
+        <li v-if="setting.about_us">
+            <span class="sidenav__list__item" @click="goToAnchor('about_us')">
+                <i class="fa fa-heart" />
+                <span>关于本站</span>
             </span>
         </li>
     </ul>

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { IClassify } from '@/helper/config';
+import { IClassify } from '@/types';
 import LazyloadImage from '@/helper/lazyload.vue';
 
 defineOptions({
