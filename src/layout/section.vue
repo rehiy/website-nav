@@ -16,7 +16,7 @@ defineProps<{
         <h4 :id="classify.title.replace(/\s/, '_')" class="nav-section__title">
             <i class="classify.icon ? classify.icon : 'fa fa-tags'" /> {{ classify.title }}
         </h4>
-        <div class="nav-section__main row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4">
             <div v-for="item in classify.websites" :key="item.url" class="col d-flex">
                 <div class="nav-section__item flex-fill">
                     <a :href="item.url" class="d-flex align-items-center" target="_blank">
