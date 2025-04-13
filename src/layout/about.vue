@@ -15,7 +15,7 @@ defineProps<{
         <h4 id="about_us" class="nav-section__title">
             <i class="fa fa-heart" /> 关于本站
         </h4>
-        <div>{{ setting.about_us }}</div>
+        <div v-html="setting.about_us" />
     </div>
 </template>
 
