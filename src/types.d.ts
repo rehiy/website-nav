@@ -5,6 +5,7 @@ export interface ISetting {
     copyright: string
     url: string
     about_us: string
+    nav_menu: IWebsite[]
 }
 
 export interface ICategory {

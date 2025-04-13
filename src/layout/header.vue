@@ -18,14 +18,8 @@ defineProps<{
             </a>
             <div id="navbarSupported" class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">开发者导航</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="https://tool.tdp.fan" target="_blank">站长工具箱</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="https://tdp.fan" target="_blank">腾讯云TDP</a>
+                    <li v-for="item in setting.nav_menu" :key="item.url" class="nav-item">
+                        <a class="nav-link active" :href="item.url">{{ item.title }}</a>
                     </li>
                 </ul>
                 <form class="d-flex">
