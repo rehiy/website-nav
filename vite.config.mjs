@@ -1,6 +1,6 @@
-import { resolve } from 'node:path'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 
 // https://vitejs.dev/config/
 export default defineConfig(() => {
@@ -15,9 +15,16 @@ export default defineConfig(() => {
             vue(),
         ],
         server: {
-            allowedHosts: ['localhost', '127.0.0.1', '.cnb.run'],
+            allowedHosts: true,
             host: '0.0.0.0',
             port: 3000,
+            proxy: {
+                '/api': {
+                    target: 'http://127.0.0.1:1337',
+                    changeOrigin: true,
+                    rewrite: (path) => path.replace(/^\/api/, '')
+                }
+            }
         }
     };
 });
