@@ -87,21 +87,25 @@ defineProps<{
         a &__right {
             flex: 1;
 
+            h5,
             p {
                 line-height: 1.4;
                 overflow: hidden;
-                text-overflow: ellipsis;
-                line-clamp: 2;
+                display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
+            }
+
+            h5 {
+                -webkit-line-clamp: 1;
             }
         }
 
         &__tip {
+            width: 100%;
             position: absolute;
-            top: 0;
             left: 50%;
-            width: 90%;
+            bottom: 80%;
             transform: translate(-50%, -25px);
             transition: opacity 0.7s ease-in-out;
             text-align: center;
