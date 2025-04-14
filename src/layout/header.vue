@@ -16,7 +16,7 @@ const gotoTop = () => {
 </script>
 
 <template>
-    <nav id="top" class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <nav id="top" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" @click="gotoTop()">
                 <img src="/assets/logo.png">
@@ -30,13 +30,15 @@ const gotoTop = () => {
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="暂未开发">
-                    <button class="btn btn-outline-light text-nowrap" type="submit">
-                        搜索
-                    </button>
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="开发中">
+                        <button type="button" class="btn btn-light">
+                            搜索
+                        </button>
+                    </div>
                 </form>
             </div>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupported">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupported">
                 <span class="navbar-toggler-icon" />
             </button>
         </div>
