@@ -18,12 +18,11 @@ withDefaults(
 );
 
 const lazyImageRef = ref();
-
-const io = new IntersectionObserver((entries) => {
-    const { target, isIntersecting } = entries[0];
-    if (isIntersecting) {
-        (target as HTMLImageElement).src = target.getAttribute('data-img-src') || '';
-        io.unobserve(target);
+const io = new IntersectionObserver(([entry]) => {
+    if (entry.isIntersecting) {
+        const img = entry.target as HTMLImageElement;
+        img.src = img.dataset.src || '';
+        io.unobserve(img);
         io.disconnect();
     }
 });
@@ -34,11 +33,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <img ref="lazyImageRef" class="lazy-img" :alt="alt" :src="lazy" :data-img-src="src || lazy">
+    <img ref="lazyImageRef" :alt="alt" :src="lazy" :data-src="src || lazy">
 </template>
 
 <style scoped lang="less">
-.lazy-img {
+img {
     aspect-ratio: 1/1;
 }
 </style>
