@@ -102,36 +102,35 @@ defineProps<{
         }
 
         &__tip {
+            display: none;
+            padding: 10px;
             width: 100%;
             position: absolute;
             left: 50%;
             bottom: 80%;
             transform: translate(-50%, -25px);
-            transition: opacity 0.7s ease-in-out;
-            text-align: center;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             color: #eee;
             border-radius: 3px;
             word-break: break-all;
+            text-align: center;
             cursor: default;
-            opacity: 0;
 
             &::after {
-                content: '';
+                width: 0;
+                height: 0;
                 position: absolute;
                 top: 100%;
                 left: 50%;
                 transform: translateX(-50%);
-                width: 0;
-                height: 0;
                 border: 5px solid transparent;
                 border-top-color: rgba(0, 0, 0, 0.8);
+                content: '';
             }
         }
 
         &:hover &__tip {
-            opacity: 0.9;
+            display: block;
         }
     }
 }
