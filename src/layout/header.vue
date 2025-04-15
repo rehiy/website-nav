@@ -15,16 +15,13 @@ const websites = ref({} as IWebsite[]);
 
 const filterValue = ref('');
 watch(filterValue, (value) => {
-    websites.value = [];
-    props.categories.forEach(category => {
-        category.classifies && category.classifies.forEach(classify => {
-            classify.websites.forEach(website => {
-                if (website.title.includes(value) || website.description.includes(value)) {
-                    websites.value.push(website);
-                }
-            });
-        });
-    });
+    websites.value = props.categories.flatMap(category =>
+        category.classifies?.flatMap(classify =>
+            classify.websites?.filter(website =>
+                (website.title + website.description).includes(value)
+            ) || []
+        ) || []
+    );
 });
 
 const gotoTop = () => {
@@ -55,7 +52,7 @@ const gotoTop = () => {
                         <span class="input-group-text">
                             <i class="fa fa-search" />
                         </span>
-                        <input v-model="filterValue" class="form-control">
+                        <input v-model="filterValue" type="search" class="form-control">
                     </div>
                 </form>
             </div>
