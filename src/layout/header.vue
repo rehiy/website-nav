@@ -1,13 +1,31 @@
 <script lang="ts" setup>
-import { ISetting } from '@/types';
+import { watch, ref } from 'vue';
+import { ISetting, ICategory, IWebsite } from '@/types';
 
 defineOptions({
     name: 'LayoutHeader',
 });
 
-defineProps<{
-    setting: ISetting
+const props = defineProps<{
+    setting: ISetting,
+    categories: ICategory[]
 }>();
+
+const websites = ref({} as IWebsite[]);
+
+const filterValue = ref('');
+watch(filterValue, (value) => {
+    websites.value = [];
+    props.categories.forEach(category => {
+        category.classifies && category.classifies.forEach(classify => {
+            classify.websites.forEach(website => {
+                if (website.title.includes(value) || website.description.includes(value)) {
+                    websites.value.push(website);
+                }
+            });
+        });
+    });
+});
 
 const gotoTop = () => {
     const nav = document.querySelector('.nav-container');
@@ -16,38 +34,54 @@ const gotoTop = () => {
 </script>
 
 <template>
-    <nav id="top" class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav class="navbar navbar-expand-md bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" @click="gotoTop()">
                 <img src="/assets/logo.png">
             </a>
-            <div id="navbarSupported" class="collapse navbar-collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+                <span class="navbar-toggler-icon" />
+            </button>
+            <div class="navbar-collapse collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li v-for="item in setting.nav_menu" :key="item.url" class="nav-item">
-                        <a class="nav-link active" :href="item.url" target="_blank">
+                        <a :href="item.url" target="_blank" class="nav-link">
                             {{ item.title }}
                         </a>
                     </li>
                 </ul>
                 <form class="d-flex">
-                    <div class="input-group">
-                        <input type="search" class="form-control" placeholder="开发中">
-                        <button type="button" class="btn btn-light">
-                            搜索
-                        </button>
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text">
+                            <i class="fa fa-search" />
+                        </span>
+                        <input v-model="filterValue" class="form-control">
                     </div>
                 </form>
             </div>
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupported">
-                <span class="navbar-toggler-icon" />
-            </button>
+        </div>
+        <div v-if="filterValue" class="list-group list-group-flush scrollbar-y">
+            <div v-if="!websites.length" class="m-2">
+                没有搜索到相关网站
+            </div>
+            <template v-for="item in websites" :key="item.url">
+                <a :href="item.url" target="_blank" class="list-group-item list-group-item-action">
+                    <h5 class="mb-1">{{ item.title }}</h5>
+                    <p class="mb-1 text-muted">{{ item.description }}</p>
+                </a>
+            </template>
         </div>
     </nav>
 </template>
 
 <style scoped lang="less">
+.navbar-nav {
+    --bs-navbar-color: var(--bs-light);
+    --bs-navbar-hover-color: var(--bs-white);
+}
+
 .navbar-brand {
-    width: calc(var(--sidebar-width) - 1rem);
+    width: calc(var(--sidebar-width) - 13px);
 
     img {
         max-width: 100%;
@@ -55,12 +89,15 @@ const gotoTop = () => {
     }
 }
 
-input[type="search"] {
-    min-width: 200px;
-}
-
-button[aria-expanded="true"] {
-    margin-top: 12px;
-    margin-bottom: 6px;
+.list-group {
+    width: 320px;
+    max-height: 50vh;
+    padding: 10px;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 10px;
+    z-index: 10;
+    box-shadow: 2px 2px 8px 0px #d4e0e8;
+    background-color: var(--bs-light);
 }
 </style>
