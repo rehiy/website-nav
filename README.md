@@ -2,7 +2,7 @@
 
 实用开发者工具导航，包含各类开发者工具网址，所有网址收录文件在 `/src/website` 下存放。
 
-演示站点：https://nav.tdp.fan
+演示站点：<https://nav.tdp.fan>
 
 ## 快速启动
 
@@ -21,7 +21,7 @@ npm run build
 
 - 参考 `/src/helper/graphql.ts` 请求语句，实现后端查询支持
 
-- 修改文件 `/src/app.vue` 中的 `/helper/jsondata` 为 `/helper/graphql`
+- 修改文件 `/src/config.ts` 中的 `/jsondata` 为 `/graphql`
 
 ## 其他
 
