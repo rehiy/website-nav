@@ -2,7 +2,7 @@
 import { ref } from 'vue';
 
 import { ICategory, ISetting } from '@/types';
-import { getSetting, getCategories } from '@/helper/jsondata';
+import { getSetting, getCategories } from '@/helper/config';
 
 import Header from '@/layout/header.vue';
 import Footer from '@/layout/footer.vue';
@@ -23,12 +23,12 @@ getCategories().then(v => categories.value = v);
 
 <template>
     <div v-if="setting.title" class="vh-100 d-flex flex-column">
-        <Header :setting="setting" />
+        <Header :setting="setting" :categories="categories" />
         <main v-if="categories.length" class="d-flex overflow-hidden">
-            <div class="nav-sidebar d-none d-md-block bg-light border-end">
+            <div class="nav-sidebar scrollbar-y d-none d-md-block bg-light border-end">
                 <Sidebar :setting="setting" :categories="categories" />
             </div>
-            <div class="nav-container">
+            <div class="nav-container scrollbar-y">
                 <template v-for="category in categories" :key="category.title">
                     <template v-for="classify in category.classifies" :key="classify.title">
                         <Section v-if="classify.websites" :classify="classify" />
@@ -42,33 +42,11 @@ getCategories().then(v => categories.value = v);
 </template>
 
 <style scoped lang="less">
-.nav-sidebar {
-    width: var(--sidebar-width);
-}
-
 .nav-container {
     flex: 1;
 }
 
-.nav-sidebar,
-.nav-container {
-    overflow-y: auto;
-    transition: all 0.5s ease-in-out;
-
-    &::-webkit-scrollbar {
-        width: var(--scrollbar-width);
-    }
-
-    &::-webkit-scrollbar-thumb {
-        visibility: hidden;
-        background: #808281;
-        transition: visibility 0.5s ease-in-out;
-    }
-
-    &:hover {
-        &::-webkit-scrollbar-thumb {
-            visibility: visible;
-        }
-    }
+.nav-sidebar {
+    width: var(--sidebar-width);
 }
 </style>

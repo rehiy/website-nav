@@ -14,14 +14,15 @@ defineProps<{
 <template>
     <div class="nav-section text-body">
         <h4 :id="classify.title.replace(/\s/, '_')" class="nav-section__title">
-            <i class="classify.icon ? classify.icon : 'fa fa-tags'" /> {{ classify.title }}
+            <i class="classify.icon ? classify.icon : 'fa fa-tags'" />
+            {{ classify.title }}
         </h4>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4">
             <div v-for="item in classify.websites" :key="item.url" class="col d-flex">
                 <div class="nav-section__item flex-fill">
                     <a :href="item.url" class="d-flex align-items-center" target="_blank">
                         <div class="nav-section__item__left">
-                            <LazyloadImage :src="item.logo ? `./assets/logos/${item.logo}` : ''" :alt="item.title" />
+                            <LazyloadImage :alt="item.title" :src="item.logo ? `./assets/logos/${item.logo}` : ''" />
                         </div>
                         <div class="nav-section__item__right">
                             <h5 class="my-2">{{ item.title }}</h5>
@@ -56,17 +57,17 @@ defineProps<{
         background: #fff;
         border-radius: 4px;
         transition: all 0.3s ease;
-        box-shadow: 1px 1px 12px 0px #d4e0e8;
+        box-shadow: 2px 2px 8px 0px #d4e0e8;
 
         &:hover {
-            transform: translate3d(0, -6px, 0);
-            box-shadow: 0 26px 40px -24px rgba(0, 36, 100, 0.3);
+            transform: translate3d(0, -5px, 0);
+            box-shadow: 10px 10px 8px 0px #d4e0e8;
             cursor: pointer;
         }
 
         a {
             color: inherit;
-            padding: 12px 15px;
+            padding: 13px 15px;
             text-decoration: none;
         }
 

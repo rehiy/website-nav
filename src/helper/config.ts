@@ -1,4 +1,5 @@
-import { ISetting } from '@/types';
+import { ISetting, ICategory } from '@/types';
+import * as adapter from '@/helper/jsondata';
 
 export const setting: ISetting = {
     title: '开发者导航',
@@ -25,6 +26,18 @@ export const setting: ISetting = {
         }
     ]
 };
+
+export async function getSetting(): Promise<ISetting> {
+    const data = await adapter.getSetting();
+    Object.assign(setting, data);
+    updateMeta(setting);
+    return setting;
+}
+
+export function getCategories(): Promise<ICategory[]> {
+    const data = adapter.getCategories();
+    return data;
+}
 
 export function updateMeta(data: ISetting) {
     Object.assign(setting, data);

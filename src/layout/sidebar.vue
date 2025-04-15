@@ -60,14 +60,14 @@ ul {
         cursor: pointer;
 
         &:hover {
-            color: var(--bs-secondary-color);
+            color: #6c757d;
         }
 
         &.multiple {
-            user-select: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            user-select: none;
 
             .arrow {
                 float: right;

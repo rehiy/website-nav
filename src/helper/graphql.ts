@@ -1,11 +1,10 @@
 import { gql, request } from 'graphql-request';
 
 import { ISetting, ICategory } from '@/types';
-import * as config from '@/helper/config';
 
-const GQL_ENDPOINT = `${location.origin}/api/graphql`;
+const url = `${location.origin}/api/graphql`;
 
-export function getSetting(): Promise<ISetting> {
+export function getSetting() {
     const query = gql`
         query Datasets {
             navSetting {
@@ -20,13 +19,12 @@ export function getSetting(): Promise<ISetting> {
         }
     `;
 
-    return request<{ navSetting: ISetting }>(GQL_ENDPOINT, query).then((data) => {
-        config.updateMeta(data.navSetting);
-        return config.setting;
+    return request<{ navSetting: ISetting }>(url, query).then((data) => {
+        return data.navSetting;
     });
 }
 
-export function getCategories(): Promise<ICategory[]> {
+export function getCategories() {
     const query = gql`
         query Datasets(
             $sort: [String] = ["sort:asc"]
@@ -58,7 +56,7 @@ export function getCategories(): Promise<ICategory[]> {
         }
     `;
 
-    return request<{ navCategories: ICategory[] }>(GQL_ENDPOINT, query).then((data) => {
+    return request<{ navCategories: ICategory[] }>(url, query).then((data) => {
         return data.navCategories;
     });
 }

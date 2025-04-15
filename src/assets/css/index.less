@@ -15,3 +15,16 @@ a {
     color: var(--bs-body-color);
     text-decoration: none;
 }
+
+.scrollbar-y {
+    overflow: hidden auto;
+
+    &::-webkit-scrollbar {
+        width: var(--scrollbar-width);
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-color);
+        border-radius: var(--scrollbar-width);
+    }
+}

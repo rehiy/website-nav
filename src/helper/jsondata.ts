@@ -1,5 +1,4 @@
 import { ISetting, ICategory } from '@/types';
-import * as config from '@/helper/config';
 
 import ai from '@/website/ai.json';
 import design from '@/website/design.json';
@@ -10,18 +9,9 @@ import other from '@/website/other.json';
 import util from '@/website/util.json';
 
 export async function getSetting(): Promise<ISetting> {
-    config.updateMeta({} as ISetting);
-    return config.setting;
+    return {} as ISetting;
 }
 
 export async function getCategories(): Promise<ICategory[]> {
-    return [
-        ai,
-        util,
-        fe,
-        design,
-        learn,
-        funny,
-        other
-    ];
+    return [ai, util, fe, design, learn, funny, other];
 }
