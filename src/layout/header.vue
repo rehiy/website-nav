@@ -41,7 +41,7 @@ const gotoTop = () => {
             </button>
             <div class="navbar-collapse collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li v-for="item in setting.nav_menu" :key="item.url" class="nav-item">
+                    <li v-for="item in setting.menus" :key="item.url" class="nav-item">
                         <a :href="item.url" target="_blank" class="nav-link">
                             {{ item.title }}
                         </a>

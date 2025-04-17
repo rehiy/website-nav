@@ -1,11 +1,11 @@
 export interface ISetting {
     title: string
-    keywords: string
+    keyword: string
     description: string
     copyright: string
-    url: string
+    copyright_url: string
     about_us: string
-    nav_menu: IWebsite[]
+    menus: IWebsite[]
 }
 
 export interface ICategory {

@@ -19,7 +19,7 @@ npm run build
 
 ## 启用 GraphQL 后端
 
-- 参考 `/src/helper/graphql.ts` 请求语句，实现后端查询支持
+- 参考 `/src/helper/graphql.ts` 请求语句，实现后端查询支持，如：directus
 
 - 修改文件 `/src/config.ts` 中的 `/jsondata` 为 `/graphql`
 

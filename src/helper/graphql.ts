@@ -6,46 +6,40 @@ const url = `${location.origin}/api/graphql`;
 
 export function getSetting() {
     const query = gql`
-        query Datasets {
-            navSetting {
+        query {
+            nav_setting {
                 title
-                keywords
+                keyword
                 description
                 copyright
-                url
-                nav_menu
+                copyright_url
                 about_us
+                menus
             }
         }
     `;
 
-    return request<{ navSetting: ISetting }>(url, query).then((data) => {
-        return data.navSetting;
+    return request<{ nav_setting: ISetting }>(url, query).then((data) => {
+        return data.nav_setting;
     });
 }
 
 export function getCategories() {
     const query = gql`
-        query Datasets(
-            $sort: [String] = ["sort:asc"]
-            $pagination: PaginationArg = { pageSize: 1000 }
-            $filter1: NavCategoryFiltersInput = { valid: { eq: true } }
-            $filter2: NavClassifyFiltersInput = { valid: { eq: true } }
-            $filter3: NavWebsiteFiltersInput = { valid: { eq: true } }
-        ) {
-            navCategories(filters: $filter1, pagination: $pagination, sort: $sort) {
+        query {
+            nav_category(filter: { status: { _eq: "published" } }, limit: 1000) {
                 title
                 icon
                 description
-                classifies(filters: $filter2, pagination: $pagination, sort: $sort) {
+                classifies(filter: { status: { _eq: "published" } }, limit: 1000) {
                     title
                     icon
                     description
-                    websites(filters: $filter3, pagination: $pagination, sort: $sort) {
+                    websites(filter: { status: { _eq: "published" } }, limit: 1000) {
                         title
                         url
                         logo {
-                            url
+                            location
                         }
                         description
                         director
@@ -56,7 +50,7 @@ export function getCategories() {
         }
     `;
 
-    return request<{ navCategories: ICategory[] }>(url, query).then((data) => {
-        return data.navCategories;
+    return request<{ nav_category: ICategory[] }>(url, query).then((data) => {
+        return data.nav_category;
     });
 }
