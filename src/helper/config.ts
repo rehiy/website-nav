@@ -8,7 +8,7 @@ export const setting: ISetting = {
     copyright: '腾讯云开发者先锋',
     copyright_url: 'https://tdp.fan/#About',
     about_us: '本站由腾讯云开发者先锋运营并维护，包含各类开发者工具网址。',
-    nav_menu: [
+    menus: [
         {
             title: '开发者导航',
             url: '#',
