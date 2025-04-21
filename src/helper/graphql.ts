@@ -38,12 +38,10 @@ export function getCategories() {
                     websites(filter: { status: { _eq: "published" } }, limit: 1000) {
                         title
                         url
-                        logo {
-                            location
-                        }
                         description
-                        director
-                        squad
+                        logoObj: logo {
+                            id
+                        }
                     }
                 }
             }
@@ -51,6 +49,16 @@ export function getCategories() {
     `;
 
     return request<{ nav_category: ICategory[] }>(url, query).then((data) => {
+        data.nav_category.map((category) => {
+            category.classifies && category.classifies.map((classify) => {
+                classify.websites && classify.websites.map((website) => {
+                    if (website.logoObj) {
+                        website.logo = `/api/assets/${website.logoObj.id}`;
+                        delete website.logoObj;
+                    }
+                });
+            });
+        });
         return data.nav_category;
     });
 }

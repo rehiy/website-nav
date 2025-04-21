@@ -22,7 +22,7 @@ defineProps<{
                 <div class="nav-section__item flex-fill">
                     <a :href="item.url" class="d-flex align-items-center" target="_blank">
                         <div class="nav-section__item__left">
-                            <LazyloadImage :alt="item.title" :src="item.logo ? `./assets/logos/${item.logo}` : ''" />
+                            <LazyloadImage :alt="item.title" :src="item.logo" />
                         </div>
                         <div class="nav-section__item__right">
                             <h5 class="my-2">{{ item.title }}</h5>

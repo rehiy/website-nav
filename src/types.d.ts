@@ -28,4 +28,7 @@ export interface IWebsite {
     url: string
     description: string
     logo?: string
+    logoObj?: {
+        id: string
+    }
 }

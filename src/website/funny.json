@@ -9,7 +9,7 @@
           "title": "十年之约",
           "description": "虫洞-随机访问十年之约成员的网站",
           "url": "https://www.foreverblog.cn/go.html",
-          "logo": "www.foreverblog.cn.ico"
+          "logo": "./assets/logos/www.foreverblog.cn.ico"
         },
         {
           "title": "开往",
@@ -26,7 +26,7 @@
           "title": "radio在线听",
           "description": "在线聆听世界各个国家不同时代的歌曲",
           "url": "https://radiooooo.com",
-          "logo": "radiooooo.com.png"
+          "logo": "./assets/logos/radiooooo.com.png"
         }
       ]
     },

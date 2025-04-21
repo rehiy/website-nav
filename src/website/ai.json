@@ -9,25 +9,25 @@
           "title": "Kimi",
           "description": "月之暗面 AI 助手",
           "url": "https://kimi.moonshot.cn/",
-          "logo": "kimi.moonshot.cn.ico"
+          "logo": "./assets/logos/kimi.moonshot.cn.ico"
         },
         {
           "title": "opkfc",
           "description": "数字玩家共享 GPT",
           "url": "https://www.opkfc.com/",
-          "logo": "www.opkfc.com.ico"
+          "logo": "./assets/logos/www.opkfc.com.ico"
         },
         {
           "title": "deepseek",
           "description": "深度求索AGI",
           "url": "https://chat.deepseek.com/",
-          "logo": "chat.deepseek.com.svg"
+          "logo": "./assets/logos/chat.deepseek.com.svg"
         },
         {
           "title": "智谱清言",
           "description": "生成式 AI 助手(可画图)",
           "url": "https://chatglm.cn/main/alltoolsdetail",
-          "logo": "chatglm.cn.ico"
+          "logo": "./assets/logos/chatglm.cn.ico"
         }
       ]
     },
@@ -44,7 +44,7 @@
           "title": "Logo maker",
           "description": "使用 AI 生成 Logo",
           "url": "https://logomakerr.ai/",
-          "logo": "logomakerr.ai.svg"
+          "logo": "./assets/logos/logomakerr.ai.svg"
         },
         {
           "title": "perplexity",
@@ -72,7 +72,7 @@
           "title": "soundraw",
           "description": "AI 为你生成免版税音乐",
           "url": "https://soundraw.io/",
-          "logo": "soundraw.io.ico"
+          "logo": "./assets/logos/soundraw.io.ico"
         }
       ]
     },
@@ -89,25 +89,25 @@
           "title": "ai-bot",
           "description": "AI 工具集",
           "url": "https://ai-bot.cn/",
-          "logo": "ai-bot.cn.png"
+          "logo": "./assets/logos/ai-bot.cn.png"
         },
         {
           "title": "mojidoc",
           "description": "AI 工具分类",
           "url": "https://www.mojidoc.com/08z7y-e43hjtkw3rglpkfnsqrgkuyyey-00b",
-          "logo": "www.mojidoc.com.ico"
+          "logo": "./assets/logos/www.mojidoc.com.ico"
         },
         {
           "title": "woy.ai",
           "description": "收集各类 top AI 工具",
           "url": "https://woy.ai/",
-          "logo": "woy.ai.ico"
+          "logo": "./assets/logos/woy.ai.ico"
         },
         {
           "title": "chatgptguidess",
           "description": "chatGPT 资源网",
           "url": "https://chatgptguidess.com/",
-          "logo": "chatgptguidess.com.png"
+          "logo": "./assets/logos/chatgptguidess.com.png"
         },
         {
           "title": "openi",

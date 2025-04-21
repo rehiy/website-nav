@@ -5,23 +5,18 @@ defineOptions({
     name: 'LazyloadImage',
 });
 
-withDefaults(
-    defineProps<{
-        src: string
-        alt?: string
-        lazy?: string
-    }>(),
-    {
-        alt: 'img',
-        lazy: './assets/link.svg',
-    },
-);
+defineProps<{
+    alt?: string
+    src?: string
+}>();
 
 const lazyImageRef = ref();
 const io = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) {
         const img = entry.target as HTMLImageElement;
-        img.src = img.dataset.src || '';
+        if (img.dataset.src) {
+            img.src = img.dataset.src;
+        }
         io.unobserve(img);
         io.disconnect();
     }
@@ -33,7 +28,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <img ref="lazyImageRef" :alt="alt" :src="lazy" :data-src="src || lazy">
+    <img ref="lazyImageRef" :alt="alt" src="./assets/link.svg" :data-src="src">
 </template>
 
 <style scoped lang="less">
