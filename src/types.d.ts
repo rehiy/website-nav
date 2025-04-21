@@ -1,5 +1,6 @@
 export interface ISetting {
     title: string
+    logo: string
     keyword: string
     description: string
     copyright: string

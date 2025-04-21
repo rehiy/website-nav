@@ -34,7 +34,7 @@ const gotoTop = () => {
     <nav class="navbar navbar-expand-md bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#" @click="gotoTop()">
-                <img src="/assets/logo.png">
+                <img :alt="setting.title" :src="setting.logo || './assets/logo.png'">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
                 <span class="navbar-toggler-icon" />

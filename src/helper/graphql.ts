@@ -9,6 +9,7 @@ export function getSetting() {
         query {
             nav_setting {
                 title
+                logo
                 keyword
                 description
                 copyright
