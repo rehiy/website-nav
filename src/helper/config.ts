@@ -3,6 +3,7 @@ import * as adapter from '@/helper/jsondata';
 
 export const setting: ISetting = {
     title: '开发者导航',
+    logo: './assets/logo.png',
     keyword: '开发者,工具,导航',
     description: '本站由腾讯云开发者先锋运营并维护，包含各类开发者工具网址。',
     copyright: '腾讯云开发者先锋',
