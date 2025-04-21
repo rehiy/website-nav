@@ -10,7 +10,9 @@ defineProps<{
     src?: string
 }>();
 
+const lazy = './assets/link.svg';
 const lazyImageRef = ref();
+
 const io = new IntersectionObserver(([entry]) => {
     if (entry.isIntersecting) {
         const img = entry.target as HTMLImageElement;
@@ -28,7 +30,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <img ref="lazyImageRef" :alt="alt" src="./assets/link.svg" :data-src="src">
+    <img ref="lazyImageRef" :alt="alt" :src="lazy" :data-src="src">
 </template>
 
 <style scoped lang="less">
