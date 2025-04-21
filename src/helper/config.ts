@@ -1,5 +1,5 @@
 import { ISetting, ICategory } from '@/types';
-import * as adapter from '@/helper/graphql';
+import * as adapter from '@/helper/jsondata';
 
 export const setting: ISetting = {
     title: '开发者导航',

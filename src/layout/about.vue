@@ -15,7 +15,8 @@ defineProps<{
 <template>
     <div class="nav-section text-body">
         <h4 id="about_us" class="nav-section__title">
-            <i class="fa fa-heart" /> 关于本站
+            <span class="material-symbols-outlined">brand_awareness</span>
+            <span class="ms-3">关于本站</span>
         </h4>
         <vue-markdown :source="setting.about_us" />
     </div>
@@ -29,10 +30,6 @@ defineProps<{
         font-size: 17px;
         font-weight: 400;
         margin: 16px 0 20px;
-
-        i {
-            margin-right: 7px;
-        }
     }
 }
 </style>

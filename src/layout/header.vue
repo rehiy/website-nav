@@ -50,7 +50,7 @@ const gotoTop = () => {
                 <form class="d-flex">
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text">
-                            <i class="fa fa-search" />
+                            <span class="material-symbols-outlined">manage_search</span>
                         </span>
                         <input v-model="filterValue" type="search" class="form-control">
                     </div>

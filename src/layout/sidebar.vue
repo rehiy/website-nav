@@ -22,23 +22,26 @@ const goToAnchor = (id: string) => {
         <li v-for="category in categories" :key="category.title" class="border-bottom">
             <span class="sidenav__list__item multiple" @click="category.expand = !category.expand">
                 <span>
-                    <i :class="[category.icon || 'fa fa-hand-point-right']" />
-                    <span>{{ category.title }}</span>
+                    <span class="material-symbols-outlined">{{ category.icon || 'done_all' }}</span>
+                    <span class="ms-3">{{ category.title }}</span>
                 </span>
-                <span class="arrow fa fa-angle-right" :class="[category.expand ? 'arrow--expand' : '']" />
+                <span class="arrow" :class="[category.expand ? 'arrow--expand' : '']">
+                    <span class="material-symbols-outlined">keyboard_arrow_right</span>
+                </span>
             </span>
             <ul v-if="category.expand">
                 <li v-for="classify in category.classifies" :key="classify.title" class="border-bottom">
                     <span class="sidenav__list__item" @click="goToAnchor(classify.title.replace(/\s/, '_'))">
-                        <span>{{ classify.title }}</span>
+                        <span class="material-symbols-outlined">{{ classify.icon || 'arrow_right' }}</span>
+                        <span class="ms-2">{{ classify.title }}</span>
                     </span>
                 </li>
             </ul>
         </li>
         <li v-if="setting.about_us">
             <span class="sidenav__list__item" @click="goToAnchor('about_us')">
-                <i class="fa fa-heart" />
-                <span>关于本站</span>
+                <span class="material-symbols-outlined">brand_awareness</span>
+                <span class="ms-3">关于本站</span>
             </span>
         </li>
     </ul>
@@ -71,18 +74,12 @@ ul {
 
             .arrow {
                 float: right;
-                font-size: 10px;
                 transition: transform 0.3s ease-in-out;
 
                 &--expand {
                     transform: rotate(90deg);
                 }
             }
-        }
-
-        i {
-            display: inline-block;
-            margin-right: 15px;
         }
     }
 

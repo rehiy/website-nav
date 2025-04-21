@@ -30,7 +30,7 @@ const gotoTop = () => {
         </div>
         <div class="goto-top">
             <a href="#" @click="gotoTop">
-                <i class="fa fa-jet-fighter-up" />
+                <span class="material-symbols-outlined">swipe_up</span>
             </a>
         </div>
     </footer>
