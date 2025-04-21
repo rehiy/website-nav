@@ -29,6 +29,7 @@ export interface IWebsite {
     url: string
     description: string
     logo?: string
+    // for Directus CMS
     logoObj?: {
         id: string
     }

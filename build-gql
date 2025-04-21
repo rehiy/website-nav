@@ -1,9 +1,9 @@
 #!/bin/sh
 #
 
-sed -i "s#helper/jsondata#helper/graphql#g" src/helper/config.ts
+sed -i "s#helper/jsondata#helper/directus#g" src/helper/config.ts
 
 npm run build -- --base /nav/ --outDir dist/nav
 rm -rf dist/nav/assets/logos
 
-sed -i "s#helper/graphql#helper/jsondata#g" src/helper/config.ts
+sed -i "s#helper/directus#helper/jsondata#g" src/helper/config.ts

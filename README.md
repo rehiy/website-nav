@@ -17,11 +17,11 @@ npm run dev
 npm run build
 ```
 
-## 启用 GraphQL 后端
+## 启用 Directus 后端
 
-- 参考 `/src/helper/graphql.ts` 请求语句，实现后端查询支持，如：directus
+- 参考 `/src/helper/directus.ts` 请求语句，实现后端查询支持
 
-- 修改文件 `/src/config.ts` 中的 `/jsondata` 为 `/graphql`
+- 修改文件 `/src/config.ts` 中的 `/jsondata` 为 `/directus`
 
 ## 其他
 
