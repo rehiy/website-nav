@@ -2,7 +2,8 @@ import { gql, request } from 'graphql-request';
 
 import { ISetting, ICategory } from '@/types';
 
-const url = `${location.origin}/api/graphql`;
+const filesURL = `${location.origin}/api/assets`;
+const queryURL = `${location.origin}/api/graphql`;
 
 export function getSetting() {
     const query = gql`
@@ -20,7 +21,7 @@ export function getSetting() {
         }
     `;
 
-    return request<{ nav_setting: ISetting }>(url, query).then((data) => {
+    return request<{ nav_setting: ISetting }>(queryURL, query).then((data) => {
         return data.nav_setting;
     });
 }
@@ -49,12 +50,12 @@ export function getCategories() {
         }
     `;
 
-    return request<{ nav_category: ICategory[] }>(url, query).then((data) => {
+    return request<{ nav_category: ICategory[] }>(queryURL, query).then((data) => {
         data.nav_category.map((category) => {
             category.classifies && category.classifies.map((classify) => {
                 classify.websites && classify.websites.map((website) => {
                     if (website.logoObj) {
-                        website.logo = `/api/assets/${website.logoObj.id}`;
+                        website.logo = filesURL + website.logoObj.id;
                         delete website.logoObj;
                     }
                 });
