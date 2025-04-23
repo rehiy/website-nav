@@ -5,36 +5,37 @@ import { ICategory, ISetting } from '@/types';
 import { getSetting, getCategories } from '@/helper/config';
 
 import Header from '@/layout/header.vue';
-import Footer from '@/layout/footer.vue';
 import Sidebar from '@/layout/sidebar.vue';
+import Search from '@/layout/search.vue';
 import Section from '@/layout/section.vue';
-import About from '@/layout/about.vue';
+import Topics from '@/layout/topics.vue';
+import Footer from '@/layout/footer.vue';
 
-defineOptions({
-    name: 'LayoutIndex',
-});
+defineOptions({ name: 'LayoutIndex' });
 
 const setting = ref({} as ISetting);
 getSetting().then(v => setting.value = v);
 
 const categories = ref([] as ICategory[]);
-getCategories().then(v => categories.value = v);
+const originData = ref([] as ICategory[]);
+getCategories().then(v => categories.value = originData.value = v);
 </script>
 
 <template>
-    <div v-if="setting.title" class="vh-100 d-flex flex-column">
-        <Header :setting="setting" :categories="categories" />
-        <main v-if="categories.length" class="d-flex overflow-hidden">
+    <div class="vh-100 d-flex flex-column">
+        <Header :setting="setting" />
+        <main class="d-flex overflow-hidden">
             <div class="nav-sidebar scrollbar-y d-none d-md-block bg-light border-end">
                 <Sidebar :setting="setting" :categories="categories" />
             </div>
             <div class="nav-container scrollbar-y">
-                <template v-for="category in categories" :key="category.title">
-                    <template v-for="classify in category.classifies" :key="classify.title">
+                <Search v-model="categories" :data="originData" />
+                <template v-for="(category, km) in categories" :key="km">
+                    <template v-for="(classify, kn) in category.classifies" :key="kn">
                         <Section v-if="classify.websites" :classify="classify" />
                     </template>
                 </template>
-                <About :setting="setting" />
+                <Topics :setting="setting" />
                 <Footer :setting="setting" />
             </div>
         </main>

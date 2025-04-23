@@ -1,15 +1,9 @@
 <script lang="ts" setup>
 import VueMarkdown from 'vue-markdown-render';
-
 import { ISetting } from '@/types';
 
-defineOptions({
-    name: 'LayoutAbout',
-});
-
-defineProps<{
-    setting: ISetting
-}>();
+defineOptions({ name: 'LayoutTopics' });
+defineProps<{ setting: ISetting }>();
 </script>
 
 <template>
@@ -18,7 +12,7 @@ defineProps<{
             <span class="material-symbols-outlined">brand_awareness</span>
             <span class="ms-3">关于本站</span>
         </h4>
-        <vue-markdown :source="setting.about_us" />
+        <vue-markdown :source="setting.about_us || ''" />
     </div>
 </template>
 

@@ -1,14 +1,8 @@
 <script lang="ts" setup>
 import { ISetting, ICategory } from '@/types';
 
-defineOptions({
-    name: 'LayoutSidebar',
-});
-
-defineProps<{
-    setting: ISetting,
-    categories: ICategory[]
-}>();
+defineOptions({ name: 'LayoutSidebar' });
+defineProps<{ setting: ISetting, categories: ICategory[] }>();
 
 const goToAnchor = (id: string) => {
     const top = document.getElementById(id)?.offsetTop || 0;

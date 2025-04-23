@@ -2,13 +2,8 @@
 import { IClassify } from '@/types';
 import LazyloadImage from '@/helper/lazyload.vue';
 
-defineOptions({
-    name: 'LayoutSection',
-});
-
-defineProps<{
-    classify: IClassify
-}>();
+defineOptions({ name: 'LayoutSection' });
+defineProps<{ classify: IClassify }>();
 </script>
 
 <template>
@@ -18,7 +13,7 @@ defineProps<{
             <span class="ms-3">{{ classify.title }}</span>
         </h4>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4">
-            <div v-for="item in classify.websites" :key="item.url" class="col d-flex">
+            <div v-for="(item, key) in classify.websites" :key="key" class="col d-flex">
                 <div class="nav-section__item flex-fill">
                     <a :href="item.url" class="d-flex align-items-center" target="_blank">
                         <div class="nav-section__item__left">

@@ -1,13 +1,8 @@
 <script lang="ts" setup>
 import { ISetting } from '@/types';
 
-defineOptions({
-    name: 'LayoutAFooter',
-});
-
-defineProps<{
-    setting: ISetting
-}>();
+defineOptions({ name: 'LayoutFooter' });
+defineProps<{ setting: ISetting }>();
 
 const year = new Date().getFullYear();
 
@@ -21,7 +16,8 @@ const gotoTop = () => {
     <footer class="d-flex bg-light p-4 pb-3">
         <div class="flex-fill text-body-secondary">
             <div class="mb-2">
-                &copy; 2021-{{ year }} <a :href="setting.copyright_url" target="_blank">{{ setting.copyright }}</a>
+                &copy; 2021-{{ year }}
+                <a :href="setting.copyright_url" target="_blank">{{ setting.copyright }}</a>
             </div>
             <div>
                 当前页面由 <a href="https://www.rehiy.com" target="_blank">若海</a> 基于 Bootstrap&Vue 构建，

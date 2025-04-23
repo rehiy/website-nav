@@ -1,28 +1,8 @@
 <script lang="ts" setup>
-import { watch, ref } from 'vue';
-import { ISetting, ICategory, IWebsite } from '@/types';
+import { ISetting } from '@/types';
 
-defineOptions({
-    name: 'LayoutHeader',
-});
-
-const props = defineProps<{
-    setting: ISetting,
-    categories: ICategory[]
-}>();
-
-const websites = ref({} as IWebsite[]);
-
-const filterValue = ref('');
-watch(filterValue, (value) => {
-    websites.value = props.categories.flatMap(category =>
-        category.classifies?.flatMap(classify =>
-            classify.websites?.filter(website =>
-                (website.title + website.description).includes(value)
-            ) || []
-        ) || []
-    );
-});
+defineOptions({ name: 'LayoutHeader' });
+defineProps<{ setting: ISetting }>();
 
 const gotoTop = () => {
     const nav = document.querySelector('.nav-container');
@@ -47,26 +27,10 @@ const gotoTop = () => {
                         </a>
                     </li>
                 </ul>
-                <form class="d-flex">
-                    <div class="input-group flex-nowrap">
-                        <span class="input-group-text">
-                            <span class="material-symbols-outlined">manage_search</span>
-                        </span>
-                        <input v-model="filterValue" type="search" class="form-control">
-                    </div>
-                </form>
+                <div class="d-flex">
+                    &nbsp;
+                </div>
             </div>
-        </div>
-        <div v-if="filterValue" class="list-group list-group-flush scrollbar-y">
-            <div v-if="!websites.length" class="m-2">
-                没有搜索到相关网站
-            </div>
-            <template v-for="item in websites" :key="item.url">
-                <a :href="item.url" target="_blank" class="list-group-item list-group-item-action">
-                    <h5 class="mb-1">{{ item.title }}</h5>
-                    <p class="mb-1 text-muted">{{ item.description }}</p>
-                </a>
-            </template>
         </div>
     </nav>
 </template>
@@ -84,17 +48,5 @@ const gotoTop = () => {
         max-width: 100%;
         max-height: 44px;
     }
-}
-
-.list-group {
-    width: 320px;
-    max-height: 50vh;
-    padding: 10px;
-    position: absolute;
-    top: calc(100% + 6px);
-    right: 10px;
-    z-index: 10;
-    box-shadow: 2px 2px 8px 0px #d4e0e8;
-    background-color: var(--bs-light);
 }
 </style>
