@@ -2,7 +2,7 @@ import { gql, request } from 'graphql-request';
 
 import { ISetting, ICategory } from '@/types';
 
-const filesURL = `${location.origin}/api/assets`;
+const filesURL = `${location.origin}/api/assets/`;
 const queryURL = `${location.origin}/api/graphql`;
 
 export function getSetting() {
