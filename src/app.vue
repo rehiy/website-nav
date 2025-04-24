@@ -29,10 +29,10 @@ getCategories().then(v => categories.value = originData.value = v);
                 <Sidebar :setting="setting" :categories="categories" />
             </div>
             <div class="nav-container scrollbar-y">
-                <Search v-model="categories" :data="originData" />
-                <template v-for="(category, km) in categories" :key="km">
-                    <template v-for="(classify, kn) in category.classifies" :key="kn">
-                        <Section v-if="classify.websites" :classify="classify" />
+                <Search v-model="categories" :origin="originData" />
+                <template v-for="category in categories" :key="category.title">
+                    <template v-for="classify in category.classifies" :key="classify.title">
+                        <Section :classify="classify" />
                     </template>
                 </template>
                 <Topics :setting="setting" />

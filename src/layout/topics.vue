@@ -7,8 +7,8 @@ defineProps<{ setting: ISetting }>();
 </script>
 
 <template>
-    <div class="nav-section text-body">
-        <h4 id="about_us" class="nav-section__title">
+    <div v-if="setting.about_us" class="nav-section">
+        <h4 id="topics-about_us" class="nav-section__title">
             <span class="material-symbols-outlined">brand_awareness</span>
             <span class="ms-3">关于本站</span>
         </h4>

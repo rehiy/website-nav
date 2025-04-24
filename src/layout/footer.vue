@@ -20,7 +20,7 @@ const gotoTop = () => {
                 <a :href="setting.copyright_url" target="_blank">{{ setting.copyright }}</a>
             </div>
             <div>
-                当前页面由 <a href="https://www.rehiy.com" target="_blank">若海</a> 基于 Bootstrap&Vue 构建，
+                此模板由 <a href="https://www.rehiy.com" target="_blank">若海</a> 基于 Bootstrap&Vue 构建，
                 源码托管于 <a href="https://cnb.cool/tdp/nav" target="_blank">云原生构建（CNB）</a>
             </div>
         </div>

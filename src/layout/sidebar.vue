@@ -33,7 +33,7 @@ const goToAnchor = (id: string) => {
             </ul>
         </li>
         <li v-if="setting.about_us">
-            <span class="sidenav__list__item" @click="goToAnchor('about_us')">
+            <span class="sidenav__list__item" @click="goToAnchor('topics-about_us')">
                 <span class="material-symbols-outlined">brand_awareness</span>
                 <span class="ms-3">关于本站</span>
             </span>

@@ -7,21 +7,21 @@ defineProps<{ classify: IClassify }>();
 </script>
 
 <template>
-    <div class="nav-section text-body">
+    <div v-if="classify.websites" class="nav-section">
         <h4 :id="classify.title.replace(/\s/, '_')" class="nav-section__title">
             <span class="material-symbols-outlined">{{ classify.icon || 'done_all' }}</span>
             <span class="ms-3">{{ classify.title }}</span>
         </h4>
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xxl-4 g-4">
-            <div v-for="(item, key) in classify.websites" :key="key" class="col d-flex">
+            <div v-for="item in classify.websites" :key="item.url" class="col d-flex">
                 <div class="nav-section__item flex-fill">
                     <a :href="item.url" class="d-flex align-items-center" target="_blank">
                         <div class="nav-section__item__left">
                             <LazyloadImage :alt="item.title" :src="item.logo" />
                         </div>
                         <div class="nav-section__item__right">
-                            <h5 class="my-2">{{ item.title }}</h5>
-                            <p class="my-2 text-body-secondary">{{ item.description }}</p>
+                            <h5>{{ item.title }}</h5>
+                            <p class="text-body-secondary">{{ item.description }}</p>
                         </div>
                     </a>
                     <div class="nav-section__item__tip">
@@ -79,8 +79,9 @@ defineProps<{ classify: IClassify }>();
         a &__right {
             flex: 1;
 
-            h5,
-            p {
+            p,
+            h5 {
+                margin: 0.5rem 0;
                 line-height: 1.4;
                 overflow: hidden;
                 display: -webkit-box;
